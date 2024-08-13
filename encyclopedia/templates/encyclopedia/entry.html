@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+    {% if content == None %}
+        <h1>Error: Page not found</h1> <!-- Muestra un mensaje de error si no hay contenido -->
+    {% else %}
+        <h1>{{ name }}</h1> <!-- Muestra el nombre de la entrada -->
+        {{ content | safe }} <!-- Muestra el contenido de la entrada, permite HTML en el contenido -->
+        <a href="{% url 'entries:edit_page' name=name %}" class="btn btn-secondary mt-3">Edit Page</a> <!-- Enlace para editar la entrada -->
+    {% endif %}
+{% endblock %}
